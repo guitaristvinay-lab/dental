@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Karishma Dental Clinic – Your Smile, Our Passion</title>
+    <meta name="description"
+        content="Karishma Dental Clinic offers world-class dental care including cosmetic dentistry, orthodontics, implants, and more. Book your appointment today!" />
+    <meta name="keywords" content="dental clinic, dentist, teeth whitening, braces, implants, Karishma Dental Clinic" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css?v=2" />
+</head>
+
+<body>
+
+    <!-- ========== NAVBAR ========== -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="#home" class="logo">
+                <div class="logo-icon">
+                    <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                        <circle cx="18" cy="18" r="18" fill="url(#logoGrad)" />
+                        <path
+                            d="M11 14c0-3.866 3.134-7 7-7s7 3.134 7 7c0 2.5-1.5 4.5-2.5 6.5S21 26 18 29c-3-3-3.5-6.5-4.5-8.5S11 16.5 11 14z"
+                            fill="white" />
+                        <defs>
+                            <linearGradient id="logoGrad" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#0ea5e9" />
+                                <stop offset="1" stop-color="#6366f1" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-main">Karishma</span>
+                    <span class="logo-sub">Dental Clinic</span>
+                </div>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#team" class="nav-link">Our Team</a></li>
+                <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                <li><a href="#testimonials" class="nav-link">Reviews</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <a href="#appointment" class="btn btn-primary nav-btn">Book Appointment</a>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero" id="home">
+        <div class="hero-bg">
+            <div class="hero-blob blob-1"></div>
+            <div class="hero-blob blob-2"></div>
+            <div class="hero-particles" id="particles"></div>
+        </div>
+        <div class="container hero-container">
+            <div class="hero-content" data-aos="fade-right">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    <span>Trusted by 10,000+ Happy Patients</span>
+                </div>
+                <h1 class="hero-title">
+                    Your <span class="gradient-text">Perfect Smile</span><br />Starts Here
+                </h1>
+                <p class="hero-desc">
+                    Experience world-class dental care with a gentle touch. At Karishma Dental Clinic, we combine
+                    cutting-edge technology with compassionate care to give you the smile you deserve.
+                </p>
+                <div class="hero-actions">
+                    <a href="#appointment" class="btn btn-primary btn-lg">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" />
+                            <line x1="16" y1="2" x2="16" y2="6" />
+                            <line x1="8" y1="2" x2="8" y2="6" />
+                            <line x1="3" y1="10" x2="21" y2="10" />
+                        </svg>
+                        Book Appointment
+                    </a>
+                    <a href="#services" class="btn btn-outline btn-lg">
+                        Explore Services
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-num">15+</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-num">10K+</span>
+                        <span class="stat-label">Happy Patients</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-num">4.9★</span>
+                        <span class="stat-label">Patient Rating</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual" data-aos="fade-left">
+                <div class="hero-card-main">
+                    <div class="tooth-svg-wrap">
+                        <svg viewBox="0 0 200 220" class="tooth-hero-svg" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="toothGrad" x1="0" y1="0" x2="200" y2="220"
+                                    gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#e0f2fe" />
+                                    <stop offset="1" stop-color="#bae6fd" />
+                                </linearGradient>
+                                <linearGradient id="toothShine" x1="40" y1="20" x2="100" y2="120"
+                                    gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="white" stop-opacity="0.9" />
+                                    <stop offset="1" stop-color="white" stop-opacity="0" />
+                                </linearGradient>
+                                <filter id="toothShadow" x="-20%" y="-20%" width="140%" height="140%">
+                                    <feDropShadow dx="0" dy="12" stdDeviation="20" flood-color="#0ea5e9"
+                                        flood-opacity="0.25" />
+                                </filter>
+                            </defs>
+                            <path filter="url(#toothShadow)"
+                                d="M100 10 C60 10, 20 35, 20 75 C20 105, 35 130, 40 160 C45 185, 55 210, 70 210 C80 210, 85 195, 90 180 C95 165, 98 155, 100 155 C102 155, 105 165, 110 180 C115 195, 120 210, 130 210 C145 210, 155 185, 160 160 C165 130, 180 105, 180 75 C180 35, 140 10, 100 10Z"
+                                fill="url(#toothGrad)" stroke="#7dd3fc" stroke-width="2" />
+                            <path
+                                d="M100 10 C60 10, 20 35, 20 75 C20 105, 35 130, 40 160 C45 185, 55 210, 70 210 C80 210, 85 195, 90 180 C95 165, 98 155, 100 155 C102 155, 105 165, 110 180 C115 195, 120 210, 130 210 C145 210, 155 185, 160 160 C165 130, 180 105, 180 75 C180 35, 140 10, 100 10Z"
+                                fill="url(#toothShine)" />
+                            <circle cx="75" cy="60" r="8" fill="white" opacity="0.7" />
+                            <circle cx="60" cy="80" r="4" fill="white" opacity="0.5" />
+                        </svg>
+                    </div>
+                    <div class="floating-badge badge-top">
+                        <span class="fb-icon">✓</span>
+                        <div>
+                            <div class="fb-title">Pain Free</div>
+                            <div class="fb-sub">Treatment</div>
+                        </div>
+                    </div>
+                    <div class="floating-badge badge-bottom">
+                        <span class="fb-icon">🦷</span>
+                        <div>
+                            <div class="fb-title">Advanced</div>
+                            <div class="fb-sub">Technology</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-wave">
+            <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                <path d="M0 40 C360 80 1080 0 1440 40 L1440 80 L0 80 Z" fill="#f8fafc" />
+            </svg>
+        </div>
+    </section>
+
+    <!-- ========== MARQUEE ========== -->
+    <div class="marquee-section">
+        <div class="marquee-track">
+            <div class="marquee-content">
+                <span>🦷 Teeth Whitening</span><span>•</span>
+                <span>💎 Dental Implants</span><span>•</span>
+                <span>😁 Invisalign</span><span>•</span>
+                <span>🔬 Root Canal</span><span>•</span>
+                <span>👑 Dental Crowns</span><span>•</span>
+                <span>✨ Veneers</span><span>•</span>
+                <span>🎯 Orthodontics</span><span>•</span>
+                <span>🛡️ Preventive Care</span><span>•</span>
+                <span>🦷 Teeth Whitening</span><span>•</span>
+                <span>💎 Dental Implants</span><span>•</span>
+                <span>😁 Invisalign</span><span>•</span>
+                <span>🔬 Root Canal</span><span>•</span>
+                <span>👑 Dental Crowns</span><span>•</span>
+                <span>✨ Veneers</span><span>•</span>
+                <span>🎯 Orthodontics</span><span>•</span>
+                <span>🛡️ Preventive Care</span><span>•</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== SERVICES ========== -->
+    <section class="section services-section" id="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">What We Offer</span>
+                <h2 class="section-title">Our Dental <span class="gradient-text">Services</span></h2>
+                <p class="section-desc">Comprehensive dental care tailored to your needs, delivered with expertise and
+                    compassion.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card" data-delay="0">
+                    <div class="service-icon" style="--c1:#0ea5e9;--c2:#38bdf8;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path
+                                d="M12 2C8.13 2 5 5.13 5 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.87-3.13-7-7-7z" />
+                            <path d="M9 21h6M10 21v-3M14 21v-3" />
+                        </svg>
+                    </div>
+                    <h3>General Dentistry</h3>
+                    <p>Routine check-ups, cleanings, fillings, and preventive care to maintain optimal oral health.</p>
+                    <a href="#contact" class="service-link">Learn More →</a>
+                </div>
+                <div class="service-card" data-delay="100">
+                    <div class="service-icon" style="--c1:#8b5cf6;--c2:#a78bfa;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path
+                                d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                        </svg>
+                    </div>
+                    <h3>Cosmetic Dentistry</h3>
+                    <p>Transform your smile with veneers, bonding, whitening, and smile makeovers designed for you.</p>
+                    <a href="#contact" class="service-link">Learn More →</a>
+                </div>
+                <div class="service-card" data-delay="200">
+                    <div class="service-icon" style="--c1:#10b981;--c2:#34d399;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01" />
+                        </svg>
+                    </div>
+                    <h3>Teeth Whitening</h3>
+                    <p>Professional in-chair and take-home whitening treatments for a radiant, dazzling smile.</p>
+                    <a href="#contact" class="service-link">Learn More →</a>
+                </div>
+                <div class="service-card" data-delay="300">
+                    <div class="service-icon" style="--c1:#f59e0b;--c2:#fbbf24;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="3" y="3" width="18" height="18" rx="2" />
+                            <path d="M3 9h18M9 21V9" />
+                        </svg>
+                    </div>
+                    <h3>Dental Implants</h3>
+                    <p>Permanent, natural-looking tooth replacements using titanium implants for lasting confidence.</p>
+                    <a href="#contact" class="service-link">Learn More →</a>
+                </div>
+                <div class="service-card" data-delay="400">
+                    <div class="service-icon" style="--c1:#ef4444;--c2:#f87171;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                        </svg>
+                    </div>
+                    <h3>Root Canal</h3>
+                    <p>Pain-free root canal therapy to save severely damaged teeth and eliminate infection.</p>
+                    <a href="#contact" class="service-link">Learn More →</a>
+                </div>
+                <div class="service-card" data-delay="500">
+                    <div class="service-icon" style="--c1:#06b6d4;--c2:#22d3ee;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                            <circle cx="9" cy="7" r="4" />
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                        </svg>
+                    </div>
+                    <h3>Orthodontics</h3>
+                    <p>Braces and clear aligners (Invisalign) for straighter teeth and a perfectly aligned bite.</p>
+                    <a href="#contact" class="service-link">Learn More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== ABOUT ========== -->
+    <section class="section about-section" id="about">
+        <div class="about-bg-shape"></div>
+        <div class="container about-container">
+            <div class="about-visual">
+                <div class="about-img-wrap">
+                    <div class="about-img-card">
+                        <div class="clinic-illustration">
+                            <svg viewBox="0 0 400 350" fill="none" xmlns="http://www.w3.org/2000/svg"
+                                class="clinic-svg">
+                                <rect width="400" height="350" rx="24" fill="url(#clinicBg)" />
+                                <!-- Clinic room illustration -->
+                                <rect x="20" y="280" width="360" height="50" rx="4" fill="#e0f2fe" />
+                                <!-- Dental chair -->
+                                <rect x="80" y="180" width="200" height="80" rx="12" fill="#bae6fd" />
+                                <rect x="60" y="240" width="240" height="20" rx="8" fill="#7dd3fc" />
+                                <rect x="240" y="140" width="20" height="100" rx="4" fill="#93c5fd" />
+                                <rect x="220" y="130" width="60" height="20" rx="4" fill="#60a5fa" />
+                                <!-- Patient -->
+                                <ellipse cx="160" cy="196" rx="35" ry="20" fill="#fde68a" />
+                                <circle cx="160" cy="175" r="22" fill="#fde68a" />
+                                <circle cx="151" cy="170" r="3" fill="#92400e" />
+                                <circle cx="169" cy="170" r="3" fill="#92400e" />
+                                <path d="M152 183 Q160 190 168 183" stroke="#92400e" stroke-width="2" fill="none"
+                                    stroke-linecap="round" />
+                                <!-- Doctor -->
+                                <circle cx="290" cy="155" r="25" fill="#fed7aa" />
+                                <rect x="265" y="175" width="50" height="70" rx="8" fill="white" />
+                                <circle cx="278" cy="170" r="3" fill="#92400e" />
+                                <circle cx="302" cy="170" r="3" fill="#92400e" />
+                                <!-- Tools -->
+                                <line x1="290" y1="175" x2="290" y2="215" stroke="#60a5fa" stroke-width="3"
+                                    stroke-linecap="round" />
+                                <circle cx="290" cy="220" r="6" fill="#3b82f6" />
+                                <!-- Window -->
+                                <rect x="280" y="40" width="80" height="80" rx="4" fill="#bfdbfe" />
+                                <line x1="320" y1="40" x2="320" y2="120" stroke="#93c5fd" stroke-width="2" />
+                                <line x1="280" y1="80" x2="360" y2="80" stroke="#93c5fd" stroke-width="2" />
+                                <!-- Plants -->
+                                <rect x="30" y="250" width="14" height="30" rx="2" fill="#86efac" />
+                                <ellipse cx="37" cy="240" rx="18" ry="20" fill="#4ade80" />
+                                <ellipse cx="25" cy="248" rx="12" ry="14" fill="#86efac" />
+                                <defs>
+                                    <linearGradient id="clinicBg" x1="0" y1="0" x2="400" y2="350">
+                                        <stop stop-color="#f0f9ff" />
+                                        <stop offset="1" stop-color="#e0f2fe" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="about-badge-card">
+                        <div class="about-badge-icon">🏆</div>
+                        <div>
+                            <div class="about-badge-title">ISO Certified</div>
+                            <div class="about-badge-sub">Quality Care</div>
+                        </div>
+                    </div>
+                    <div class="about-badge-card about-badge-card2">
+                        <div class="about-badge-icon">😊</div>
+                        <div>
+                            <div class="about-badge-title">10,000+</div>
+                            <div class="about-badge-sub">Smiles Created</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-content">
+                <span class="section-tag">About Us</span>
+                <h2 class="section-title">We Care About <span class="gradient-text">Your Smile</span></h2>
+                <p class="about-lead">At Karishma Dental Clinic, we believe everyone deserves a healthy, beautiful
+                    smile. Founded in 2009, our clinic has been the trusted dental home for thousands of families.</p>
+                <p class="about-text">Our state-of-the-art facility combines the latest dental technology with a warm,
+                    welcoming environment. From routine check-ups to complex cosmetic procedures, we offer comprehensive
+                    dental care under one roof.</p>
+                <div class="about-features">
+                    <div class="feature-item">
+                        <div class="feature-check">✓</div>
+                        <span>Advanced Digital X-Ray & 3D Imaging</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-check">✓</div>
+                        <span>Painless Anaesthesia Techniques</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-check">✓</div>
+                        <span>Sterilized & Hygienic Equipment</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-check">✓</div>
+                        <span>Flexible Payment & Insurance Plans</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-check">✓</div>
+                        <span>Emergency Dental Services Available</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-check">✓</div>
+                        <span>Child-Friendly & Family Dental Care</span>
+                    </div>
+                </div>
+                <a href="#appointment" class="btn btn-primary">Schedule Consultation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== TEAM ========== -->
+    <section class="section team-section" id="team">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Our Specialist</span>
+                <h2 class="section-title">Meet <span class="gradient-text">Our Doctor</span></h2>
+                <p class="section-desc">Led by a highly qualified dental professional dedicated to delivering
+                    exceptional care and beautiful smiles.</p>
+            </div>
+            <div class="team-grid team-single">
+                <div class="team-card team-card-featured">
+                    <div class="team-avatar team-avatar-large"
+                        style="background: linear-gradient(135deg, #0ea5e9, #6366f1);">
+                        <svg viewBox="0 0 80 80" fill="none" class="avatar-svg">
+                            <circle cx="40" cy="30" r="18" fill="rgba(255,255,255,0.9)" />
+                            <path d="M10 75c0-16.569 13.431-30 30-30s30 13.431 30 30" fill="rgba(255,255,255,0.8)" />
+                        </svg>
+                    </div>
+                    <div class="team-info">
+                        <h3>Dr. Karishma Yadav</h3>
+                        <span class="team-role">Chief Dental Surgeon &amp; Founder</span>
+                        <div class="team-degrees">
+                            <span class="degree-badge">BDS</span>
+                            <span class="degree-badge">BSC</span>
+                            <span class="degree-badge">MIDA</span>
+                        </div>
+                        <p>A highly accomplished dental professional with expertise spanning preventive, cosmetic, and
+                            restorative dentistry. Dr. Karishma Yadav founded the clinic with a single mission — to make
+                            every patient feel confident about their smile through gentle, world-class dental care.</p>
+                        <div class="team-social">
+                            <a href="#" aria-label="LinkedIn" class="social-icon">in</a>
+                            <a href="#" aria-label="Email" class="social-icon">@</a>
+                            <a href="#appointment" class="btn btn-primary"
+                                style="margin-left:auto;padding:8px 20px;font-size:0.85rem;">Book Appointment</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== GALLERY / WHY CHOOSE US ========== -->
+    <section class="section why-section" id="gallery">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Why Choose Us</span>
+                <h2 class="section-title">The <span class="gradient-text">Karishma</span> Difference</h2>
+            </div>
+            <div class="why-grid">
+                <div class="why-card why-card-large">
+                    <div class="why-icon-big">🔬</div>
+                    <h3>Cutting-Edge Technology</h3>
+                    <p>Digital X-rays, 3D cone beam CT scans, intraoral cameras, laser dentistry, and CAD/CAM same-day
+                        crowns — we invest in the best to deliver the best.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">💉</div>
+                    <h3>Painless Treatment</h3>
+                    <p>Anxiety-free dentistry with advanced anaesthesia, sedation options, and a compassionate team.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">⏰</div>
+                    <h3>Flexible Timings</h3>
+                    <p>Open 7 days a week including evenings and weekends to fit your busy schedule.</p>
+                </div>
+                <div class="why-card">
+                    <div class="why-icon">💳</div>
+                    <h3>Affordable Care</h3>
+                    <p>Transparent pricing, 0% EMI options, and acceptance of all major insurance plans.</p>
+                </div>
+                <div class="why-card why-card-large why-featured">
+                    <div class="why-number">10K+</div>
+                    <h3>Smiles Transformed</h3>
+                    <p>Over a decade of creating confident smiles for patients across all age groups, from toddlers to
+                        seniors.</p>
+                    <a href="#appointment" class="btn btn-primary" style="margin-top:1.5rem;">Start Your Journey</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== TESTIMONIALS ========== -->
+    <section class="section testimonials-section" id="testimonials">
+        <div class="testimonial-bg"></div>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" style="color:#a78bfa;border-color:#a78bfa22;background:#a78bfa11;">Patient
+                    Reviews</span>
+                <h2 class="section-title" style="color:white;">What Our <span
+                        style="background:linear-gradient(135deg,#a78bfa,#f472b6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Patients
+                        Say</span></h2>
+                <p class="section-desc" style="color:#cbd5e1;">Real stories from real patients who trusted us with their
+                    smiles.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"Dr. Karishma is absolutely brilliant! I had severe dental anxiety and the team made me feel so
+                        comfortable. My smile transformation has given me so much confidence!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar" style="background:linear-gradient(135deg,#0ea5e9,#6366f1)">P</div>
+                        <div>
+                            <strong>Priya Mehta</strong>
+                            <span>Teeth Whitening Patient</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card testimonial-featured">
+                    <div class="stars">★★★★★</div>
+                    <p>"The best dental experience I've ever had! Got my Invisalign treatment here and the results are
+                        phenomenal. The entire team is professional, friendly, and incredibly skilled."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar" style="background:linear-gradient(135deg,#8b5cf6,#ec4899)">R</div>
+                        <div>
+                            <strong>Rahul Verma</strong>
+                            <span>Invisalign Patient</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"I was terrified of dental implants but Dr. Arjun made the process seamless. No pain, quick
+                        recovery, and my new teeth look completely natural. Highly recommend!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar" style="background:linear-gradient(135deg,#10b981,#0ea5e9)">S</div>
+                        <div>
+                            <strong>Sunita Rao</strong>
+                            <span>Dental Implant Patient</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== APPOINTMENT ========== -->
+    <section class="section appointment-section" id="appointment">
+        <div class="container appt-container">
+            <div class="appt-info">
+                <span class="section-tag">Get In Touch</span>
+                <h2 class="section-title">Book Your <span class="gradient-text">Appointment</span></h2>
+                <p>Ready for a healthier, more beautiful smile? Fill out the form and our team will contact you within
+                    24 hours to confirm your appointment.</p>
+                <div class="appt-contact-items">
+                    <div class="appt-contact-item">
+                        <div class="appt-icon">📞</div>
+                        <div>
+                            <strong>Call Us</strong>
+                            <span>+91 98765 43210</span>
+                        </div>
+                    </div>
+                    <div class="appt-contact-item">
+                        <div class="appt-icon">📍</div>
+                        <div>
+                            <strong>Visit Us</strong>
+                            <span>12, Wellness Plaza, MG Road, Mumbai – 400001</span>
+                        </div>
+                    </div>
+                    <div class="appt-contact-item">
+                        <div class="appt-icon">🕐</div>
+                        <div>
+                            <strong>Working Hours</strong>
+                            <span>Mon–Sat: 9AM–8PM | Sun: 10AM–5PM</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="appt-form-wrap">
+                <form class="appt-form" id="appointmentForm" onsubmit="handleFormSubmit(event)">
+                    <h3>Schedule Appointment</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input type="text" id="firstName" name="firstName" placeholder="Your first name" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" id="lastName" name="lastName" placeholder="Your last name" required />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+91 XXXXX XXXXX" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="your@email.com" />
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Service Required</label>
+                        <select id="service" name="service" required>
+                            <option value="" disabled selected>Select a service</option>
+                            <option>General Check-up & Cleaning</option>
+                            <option>Teeth Whitening</option>
+                            <option>Dental Implants</option>
+                            <option>Orthodontics / Invisalign</option>
+                            <option>Root Canal Treatment</option>
+                            <option>Cosmetic Dentistry</option>
+                            <option>Pediatric Dentistry</option>
+                            <option>Emergency Dental Care</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="date">Preferred Date</label>
+                            <input type="date" id="date" name="date" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="time">Preferred Time</label>
+                            <select id="time" name="time" required>
+                                <option value="" disabled selected>Select time</option>
+                                <option>9:00 AM</option>
+                                <option>10:00 AM</option>
+                                <option>11:00 AM</option>
+                                <option>12:00 PM</option>
+                                <option>2:00 PM</option>
+                                <option>3:00 PM</option>
+                                <option>4:00 PM</option>
+                                <option>5:00 PM</option>
+                                <option>6:00 PM</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Additional Notes</label>
+                        <textarea id="message" name="message" placeholder="Any specific concerns or questions..."
+                            rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block" id="submitBtn">
+                        Confirm Appointment
+                    </button>
+                    <div class="form-success" id="formSuccess">
+                        <span>🎉</span> Thank you! We'll confirm your appointment shortly.
+                    </div>
+                    <div class="form-error" id="formError"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CONTACT / MAP ========== -->
+    <section class="section contact-section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Find Us</span>
+                <h2 class="section-title">Visit <span class="gradient-text">Our Clinic</span></h2>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info-cards">
+                    <div class="contact-card">
+                        <div class="cc-icon">📍</div>
+                        <h4>Address</h4>
+                        <p>12, Wellness Plaza, MG Road<br />Mumbai, Maharashtra – 400001</p>
+                    </div>
+                    <div class="contact-card">
+                        <div class="cc-icon">📞</div>
+                        <h4>Phone</h4>
+                        <p>+91 98765 43210<br />+91 22 1234 5678</p>
+                    </div>
+                    <div class="contact-card">
+                        <div class="cc-icon">✉️</div>
+                        <h4>Email</h4>
+                        <p>info@karishmadentalclinic.com<br />appointments@karishmadentalclinic.com</p>
+                    </div>
+                    <div class="contact-card">
+                        <div class="cc-icon">🕐</div>
+                        <h4>Hours</h4>
+                        <p>Monday – Saturday: 9:00 AM – 8:00 PM<br />Sunday: 10:00 AM – 5:00 PM</p>
+                    </div>
+                </div>
+                <div class="map-wrap">
+                    <div class="map-placeholder">
+                        <svg viewBox="0 0 500 320" fill="none" class="map-svg">
+                            <rect width="500" height="320" fill="#e0f2fe" />
+                            <!-- Grid lines -->
+                            <line x1="0" y1="80" x2="500" y2="80" stroke="#bae6fd" stroke-width="1" />
+                            <line x1="0" y1="160" x2="500" y2="160" stroke="#bae6fd" stroke-width="1" />
+                            <line x1="0" y1="240" x2="500" y2="240" stroke="#bae6fd" stroke-width="1" />
+                            <line x1="125" y1="0" x2="125" y2="320" stroke="#bae6fd" stroke-width="1" />
+                            <line x1="250" y1="0" x2="250" y2="320" stroke="#bae6fd" stroke-width="1" />
+                            <line x1="375" y1="0" x2="375" y2="320" stroke="#bae6fd" stroke-width="1" />
+                            <!-- Roads -->
+                            <rect x="0" y="145" width="500" height="30" rx="0" fill="#cbd5e1" />
+                            <rect x="220" y="0" width="30" height="320" rx="0" fill="#cbd5e1" />
+                            <rect x="0" y="220" width="220" height="16" fill="#cbd5e1" />
+                            <rect x="280" y="100" width="220" height="16" fill="#cbd5e1" />
+                            <!-- Buildings -->
+                            <rect x="30" y="40" width="60" height="100" rx="4" fill="#93c5fd" />
+                            <rect x="100" y="60" width="100" height="80" rx="4" fill="#7dd3fc" />
+                            <rect x="280" y="30" width="80" height="110" rx="4" fill="#93c5fd" />
+                            <rect x="370" y="60" width="100" height="80" rx="4" fill="#bae6fd" />
+                            <rect x="30" y="190" width="140" height="90" rx="4" fill="#7dd3fc" />
+                            <rect x="280" y="185" width="190" height="95" rx="4" fill="#a5f3fc" />
+                            <!-- Pin -->
+                            <circle cx="250" cy="160" r="20" fill="#0ea5e9" />
+                            <path
+                                d="M250 140 C238 140 228 150 228 162 C228 178 250 192 250 192 C250 192 272 178 272 162 C272 150 262 140 250 140Z"
+                                fill="#ef4444" />
+                            <circle cx="250" cy="162" r="7" fill="white" />
+                            <text x="250" y="216" text-anchor="middle" fill="#0c4a6e" font-size="12" font-family="Inter"
+                                font-weight="600">Karishma Dental Clinic</text>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="container footer-grid">
+                <div class="footer-brand">
+                    <a href="#home" class="logo">
+                        <div class="logo-icon">
+                            <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                                <circle cx="18" cy="18" r="18" fill="url(#footerLogoGrad)" />
+                                <path
+                                    d="M11 14c0-3.866 3.134-7 7-7s7 3.134 7 7c0 2.5-1.5 4.5-2.5 6.5S21 26 18 29c-3-3-3.5-6.5-4.5-8.5S11 16.5 11 14z"
+                                    fill="white" />
+                                <defs>
+                                    <linearGradient id="footerLogoGrad" x1="0" y1="0" x2="36" y2="36">
+                                        <stop stop-color="#0ea5e9" />
+                                        <stop offset="1" stop-color="#6366f1" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                        <div class="logo-text">
+                            <span class="logo-main" style="color:white;">Karishma</span>
+                            <span class="logo-sub" style="color:#94a3b8;">Dental Clinic</span>
+                        </div>
+                    </a>
+                    <p class="footer-brand-desc">Your trusted dental care partner since 2009. Creating beautiful,
+                        healthy smiles for over 10,000 happy patients.</p>
+                    <div class="footer-socials">
+                        <a href="#" class="footer-social" aria-label="Facebook">f</a>
+                        <a href="#" class="footer-social" aria-label="Instagram">in</a>
+                        <a href="#" class="footer-social" aria-label="Twitter">t</a>
+                        <a href="#" class="footer-social" aria-label="YouTube">▶</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#team">Our Team</a></li>
+                        <li><a href="#testimonials">Reviews</a></li>
+                        <li><a href="#appointment">Book Appointment</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">General Dentistry</a></li>
+                        <li><a href="#services">Cosmetic Dentistry</a></li>
+                        <li><a href="#services">Teeth Whitening</a></li>
+                        <li><a href="#services">Dental Implants</a></li>
+                        <li><a href="#services">Root Canal</a></li>
+                        <li><a href="#services">Orthodontics</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Info</h4>
+                    <ul class="footer-contact-list">
+                        <li>📍 12, Wellness Plaza, MG Road, Mumbai – 400001</li>
+                        <li>📞 +91 98765 43210</li>
+                        <li>✉️ info@karishmadentalclinic.com</li>
+                        <li>🕐 Mon–Sat: 9AM–8PM | Sun: 10AM–5PM</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>© 2024 Karishma Dental Clinic. All rights reserved. | Designed with ♥ for your smile.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+    <script type="module" src="script.js?v=2"></script>
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+# Firebase credentials — DO NOT commit real API keys
+firebase-config.js
+
+# Firebase local files
+.firebase/
+*.log
+
+# Node
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
