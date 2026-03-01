@@ -7,7 +7,8 @@ import {
     getFirestore,
     collection, addDoc,
     getDocs, query,
-    orderBy, serverTimestamp
+    orderBy, serverTimestamp,
+    doc, updateDoc
 }
     from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
@@ -50,6 +51,17 @@ export async function fetchAppointments() {
     } catch (error) {
         console.error("❌ Error fetching appointments:", error);
         return [];
+    }
+}
+
+// ── Update Appointment Status ─────────────────────────────────
+export async function updateAppointmentStatus(id, status) {
+    try {
+        await updateDoc(doc(db, APPOINTMENTS, id), { status });
+        return { success: true };
+    } catch (error) {
+        console.error("❌ Error updating status:", error);
+        return { success: false, error: error.message };
     }
 }
 

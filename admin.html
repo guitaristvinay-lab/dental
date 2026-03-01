@@ -250,6 +250,48 @@
             color: #818cf8;
         }
 
+        .status-completed {
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+            font-weight: 700;
+        }
+
+        /* ── Action Button ── */
+        .action-btn {
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid rgba(16, 185, 129, 0.35);
+            color: #34d399;
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: 0.2s;
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .action-btn:hover {
+            background: rgba(16, 185, 129, 0.3);
+            transform: scale(1.04);
+        }
+
+        .action-btn:disabled {
+            opacity: 0.45;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .action-btn.done-btn {
+            background: rgba(16, 185, 129, 0.08);
+            color: #10b981;
+            border-color: rgba(16, 185, 129, 0.2);
+            cursor: default;
+        }
+
         /* ── Loading / Empty ── */
         .state-box {
             text-align: center;
@@ -508,6 +550,7 @@
                 <table id="appointmentsTable" style="display:none;">
                     <thead>
                         <tr>
+                            <th>Action</th>
                             <th>#</th>
                             <th>Patient Name</th>
                             <th>Phone</th>
@@ -526,7 +569,7 @@
     </div><!-- /dashboardApp -->
 
     <script type="module">
-        import { fetchAppointments } from './firebase-service.js';
+        import { fetchAppointments, updateAppointmentStatus } from './firebase-service.js';
 
         // --- Login Logic ---
         const loginOverlay = document.getElementById('loginOverlay');
@@ -597,16 +640,28 @@
                 const ts = a.createdAt?.toDate?.() || null;
                 const booked = ts ? ts.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }) : '—';
                 const status = a.status || 'pending';
-                const statusClass = { pending: 'status-pending', confirmed: 'status-confirmed', done: 'status-done' }[status] || 'status-pending';
+                const isCompleted = status === 'completed';
+                const statusClass = {
+                    pending: 'status-pending',
+                    confirmed: 'status-confirmed',
+                    done: 'status-done',
+                    completed: 'status-completed'
+                }[status] || 'status-pending';
+                const statusLabel = status.charAt(0).toUpperCase() + status.slice(1);
 
-                return `<tr>
+                const actionBtn = isCompleted
+                    ? `<button class="action-btn done-btn" disabled>✅ Completed</button>`
+                    : `<button class="action-btn" onclick="markComplete('${a.id}', this)">☑ Mark Done</button>`;
+
+                return `<tr id="row-${a.id}">
+        <td>${actionBtn}</td>
         <td>${i + 1}</td>
         <td class="td-name">${name}</td>
         <td>${a.phone || '—'}</td>
         <td><span class="td-service">${a.service || '—'}</span></td>
         <td>${a.date || '—'} ${a.time ? '@ ' + a.time : ''}</td>
         <td>${a.message ? a.message.slice(0, 50) + (a.message.length > 50 ? '…' : '') : '—'}</td>
-        <td><span class="status-badge ${statusClass}">${status.charAt(0).toUpperCase() + status.slice(1)}</span></td>
+        <td><span class="status-badge ${statusClass}" id="status-${a.id}">${statusLabel}</span></td>
         <td>${booked}</td>
       </tr>`;
             }).join('');
@@ -633,6 +688,29 @@
 
         // Auto load on page open
         // loadAppointments(); // Now called after successful login
+
+        // ── Mark appointment as Completed ──
+        window.markComplete = async function (id, btn) {
+            btn.disabled = true;
+            btn.textContent = '⏳ Saving…';
+            const result = await updateAppointmentStatus(id, 'completed');
+            if (result.success) {
+                btn.outerHTML = `<button class="action-btn done-btn" disabled>✅ Completed</button>`;
+                const badge = document.getElementById('status-' + id);
+                if (badge) {
+                    badge.textContent = 'Completed';
+                    badge.className = 'status-badge status-completed';
+                }
+                // Update local data and refresh stats
+                const entry = allData.find(a => a.id === id);
+                if (entry) entry.status = 'completed';
+                updateStats(allData);
+            } else {
+                btn.disabled = false;
+                btn.textContent = '☑ Mark Done';
+                alert('❌ Failed to update. Check Firebase connection.');
+            }
+        };
     </script>
 
 </body>
