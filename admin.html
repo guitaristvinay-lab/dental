@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Panel – Karishma Dental Clinic</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <style>
         *,
         *::before,
@@ -17,27 +16,148 @@
             padding: 0;
         }
 
+        :root {
+            --primary: #0ea5e9;
+            --primary-soft: rgba(14, 165, 233, 0.15);
+            --success: #10b981;
+            --success-soft: rgba(16, 185, 129, 0.15);
+            --warn: #fbbf24;
+            --warn-soft: rgba(251, 191, 36, 0.15);
+            --surface: rgba(255, 255, 255, 0.04);
+            --border: rgba(255, 255, 255, 0.08);
+            --muted: #64748b;
+            --text: #e2e8f0;
+            --bg: #0f172a;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
-            background: #0f172a;
-            color: #e2e8f0;
+            background: var(--bg);
+            color: var(--text);
             min-height: 100vh;
+        }
+
+        /* ── Login Overlay ── */
+        #loginOverlay {
+            position: fixed;
+            inset: 0;
+            background: var(--bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 16px;
+        }
+
+        .login-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 36px 32px;
+            width: 100%;
+            max-width: 380px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+        }
+
+        .login-logo {
+            width: 52px;
+            height: 52px;
+            background: linear-gradient(135deg, #0ea5e9, #6366f1);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.5rem;
+        }
+
+        .login-box h2 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 6px;
+        }
+
+        .login-box p {
+            font-size: 0.82rem;
+            color: var(--muted);
+            margin-bottom: 24px;
+        }
+
+        .login-input {
+            width: 100%;
+            padding: 13px 16px;
+            margin-bottom: 12px;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: #e2e8f0;
+            font-size: 0.95rem;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        .login-input:focus {
+            border-color: var(--primary);
+            background: rgba(14, 165, 233, 0.06);
+        }
+
+        .login-input::placeholder {
+            color: #475569;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 13px;
+            background: linear-gradient(135deg, #0ea5e9, #6366f1);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 0.98rem;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            transition: opacity 0.2s, transform 0.1s;
+            margin-top: 4px;
+        }
+
+        .login-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .login-btn:active {
+            transform: translateY(0);
+        }
+
+        .error-msg {
+            color: #f87171;
+            font-size: 0.82rem;
+            margin-top: 12px;
+            display: none;
+            background: rgba(239, 68, 68, 0.1);
+            border-radius: 8px;
+            padding: 8px 12px;
         }
 
         /* ── Top Bar ── */
         .topbar {
             background: linear-gradient(135deg, #0ea5e9, #6366f1);
-            padding: 18px 32px;
+            padding: 14px 20px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             box-shadow: 0 4px 20px rgba(14, 165, 233, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .topbar-brand {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
         }
 
         .topbar-brand svg {
@@ -45,67 +165,73 @@
         }
 
         .topbar-title {
-            font-size: 1.25rem;
+            font-size: 1rem;
             font-weight: 700;
             color: white;
         }
 
         .topbar-sub {
-            font-size: 0.78rem;
+            font-size: 0.72rem;
             color: rgba(255, 255, 255, 0.7);
         }
 
         .back-link {
-            color: rgba(255, 255, 255, 0.85);
+            color: rgba(255, 255, 255, 0.9);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.82rem;
             font-weight: 500;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 5px;
             background: rgba(255, 255, 255, 0.15);
-            padding: 8px 18px;
+            padding: 7px 14px;
             border-radius: 50px;
             transition: 0.2s;
+            white-space: nowrap;
         }
 
         .back-link:hover {
             background: rgba(255, 255, 255, 0.25);
         }
 
+        .back-link span {
+            display: none;
+        }
+
         /* ── Main ── */
         .main {
             max-width: 1300px;
             margin: 0 auto;
-            padding: 40px 24px;
+            padding: 24px 16px 48px;
         }
 
         /* ── Stats Row ── */
         .stats-row {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            margin-bottom: 36px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 24px;
         }
 
         .stat-box {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 16px;
-            padding: 24px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 18px 16px;
             text-align: center;
         }
 
         .stat-box .num {
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             font-weight: 700;
             color: #38bdf8;
             font-variant-numeric: tabular-nums;
+            line-height: 1.1;
         }
 
         .stat-box .label {
-            font-size: 0.82rem;
-            color: #64748b;
+            font-size: 0.75rem;
+            color: var(--muted);
             margin-top: 4px;
         }
 
@@ -113,29 +239,32 @@
         .filter-bar {
             display: flex;
             align-items: center;
-            gap: 16px;
-            margin-bottom: 24px;
+            gap: 10px;
+            margin-bottom: 16px;
             flex-wrap: wrap;
         }
 
         .filter-bar h2 {
-            font-size: 1.25rem;
+            font-size: 1.05rem;
             font-weight: 700;
             color: white;
             flex: 1;
+            min-width: 120px;
         }
 
         .search-input {
-            background: rgba(255, 255, 255, 0.07);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: var(--surface);
+            border: 1px solid var(--border);
             border-radius: 10px;
-            padding: 10px 16px;
+            padding: 9px 14px;
             color: #e2e8f0;
-            font-size: 0.9rem;
-            font-family: 'Inter', sans-serif;
-            width: 240px;
+            font-size: 0.88rem;
+            font-family: inherit;
+            width: 200px;
             outline: none;
             transition: 0.2s;
+            flex: 1;
+            min-width: 140px;
         }
 
         .search-input:focus {
@@ -148,30 +277,94 @@
         }
 
         .refresh-btn {
-            background: rgba(14, 165, 233, 0.15);
+            background: var(--primary-soft);
             border: 1px solid rgba(14, 165, 233, 0.3);
             color: #38bdf8;
-            padding: 10px 20px;
+            padding: 9px 16px;
             border-radius: 10px;
-            font-size: 0.88rem;
+            font-size: 0.82rem;
             font-weight: 600;
-            font-family: 'Inter', sans-serif;
+            font-family: inherit;
             cursor: pointer;
             transition: 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 6px;
+            white-space: nowrap;
         }
 
         .refresh-btn:hover {
             background: rgba(14, 165, 233, 0.25);
         }
 
-        /* ── Table ── */
+        /* ── Skeleton Loading ── */
+        .skeleton-row {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 16px;
+        }
+
+        .skeleton-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            animation: shimmer 1.4s infinite linear;
+            background-size: 400% 100%;
+        }
+
+        .skel-line {
+            height: 12px;
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.06);
+            margin-bottom: 8px;
+        }
+
+        .skel-line.wide {
+            width: 70%;
+        }
+
+        .skel-line.med {
+            width: 45%;
+        }
+
+        .skel-line.short {
+            width: 25%;
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-color: rgba(255, 255, 255, 0.04);
+            }
+
+            50% {
+                background-color: rgba(255, 255, 255, 0.08);
+            }
+
+            100% {
+                background-color: rgba(255, 255, 255, 0.04);
+            }
+        }
+
+        /* ── Status / Empty / Error States ── */
+        .state-box {
+            text-align: center;
+            padding: 60px 20px;
+            color: #475569;
+        }
+
+        .state-box .icon {
+            font-size: 3rem;
+            margin-bottom: 14px;
+        }
+
+        .state-box p {
+            font-size: 0.95rem;
+        }
+
+        /* ── Table (desktop) ── */
         .table-wrap {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.07);
-            border-radius: 20px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 18px;
             overflow: hidden;
         }
 
@@ -181,16 +374,16 @@
         }
 
         thead {
-            background: rgba(14, 165, 233, 0.1);
+            background: rgba(14, 165, 233, 0.08);
         }
 
         thead th {
-            padding: 16px 20px;
+            padding: 13px 14px;
             text-align: left;
-            font-size: 0.78rem;
+            font-size: 0.72rem;
             font-weight: 700;
             color: #94a3b8;
-            letter-spacing: 1px;
+            letter-spacing: 0.8px;
             text-transform: uppercase;
             white-space: nowrap;
         }
@@ -201,12 +394,12 @@
         }
 
         tbody tr:hover {
-            background: rgba(255, 255, 255, 0.04);
+            background: rgba(255, 255, 255, 0.03);
         }
 
         tbody td {
-            padding: 16px 20px;
-            font-size: 0.875rem;
+            padding: 13px 14px;
+            font-size: 0.83rem;
             color: #cbd5e1;
             vertical-align: middle;
         }
@@ -217,31 +410,32 @@
         }
 
         .td-service {
-            background: rgba(14, 165, 233, 0.12);
+            background: var(--primary-soft);
             color: #38bdf8;
-            padding: 4px 12px;
+            padding: 3px 10px;
             border-radius: 50px;
-            font-size: 0.78rem;
+            font-size: 0.73rem;
             font-weight: 600;
             display: inline-block;
             white-space: nowrap;
         }
 
+        /* ── Status Badges ── */
         .status-badge {
-            padding: 4px 12px;
+            padding: 3px 10px;
             border-radius: 50px;
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             font-weight: 700;
             display: inline-block;
         }
 
         .status-pending {
-            background: rgba(251, 191, 36, 0.15);
-            color: #fbbf24;
+            background: var(--warn-soft);
+            color: var(--warn);
         }
 
         .status-confirmed {
-            background: rgba(16, 185, 129, 0.15);
+            background: var(--success-soft);
             color: #34d399;
         }
 
@@ -252,31 +446,31 @@
 
         .status-completed {
             background: rgba(16, 185, 129, 0.2);
-            color: #10b981;
+            color: var(--success);
             font-weight: 700;
         }
 
         /* ── Action Button ── */
         .action-btn {
-            background: rgba(16, 185, 129, 0.15);
+            background: var(--success-soft);
             border: 1px solid rgba(16, 185, 129, 0.35);
             color: #34d399;
-            padding: 6px 14px;
+            padding: 5px 12px;
             border-radius: 8px;
-            font-size: 0.82rem;
+            font-size: 0.78rem;
             font-weight: 600;
-            font-family: 'Inter', sans-serif;
+            font-family: inherit;
             cursor: pointer;
             transition: 0.2s;
             white-space: nowrap;
             display: inline-flex;
             align-items: center;
-            gap: 5px;
+            gap: 4px;
         }
 
         .action-btn:hover {
-            background: rgba(16, 185, 129, 0.3);
-            transform: scale(1.04);
+            background: rgba(16, 185, 129, 0.28);
+            transform: scale(1.03);
         }
 
         .action-btn:disabled {
@@ -286,53 +480,81 @@
         }
 
         .action-btn.done-btn {
-            background: rgba(16, 185, 129, 0.08);
-            color: #10b981;
-            border-color: rgba(16, 185, 129, 0.2);
+            background: rgba(16, 185, 129, 0.06);
+            color: var(--success);
+            border-color: rgba(16, 185, 129, 0.15);
             cursor: default;
         }
 
-        /* ── Loading / Empty ── */
-        .state-box {
-            text-align: center;
-            padding: 80px 20px;
-            color: #475569;
+        /* ── Mobile Cards ── */
+        .cards-list {
+            display: none;
+            flex-direction: column;
+            gap: 12px;
+            padding: 14px;
         }
 
-        .state-box .icon {
-            font-size: 3.5rem;
-            margin-bottom: 16px;
+        .appt-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 16px;
+            transition: background 0.15s;
         }
 
-        .state-box p {
-            font-size: 1rem;
+        .appt-card:hover {
+            background: rgba(255, 255, 255, 0.06);
         }
 
-        /* ── Spinner ── */
-        .spin {
-            display: inline-block;
-            width: 44px;
-            height: 44px;
-            border: 3px solid rgba(14, 165, 233, 0.2);
-            border-top-color: #38bdf8;
-            border-radius: 50%;
-            animation: spin 0.9s linear infinite;
-            margin-bottom: 16px;
+        .card-top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 10px;
         }
 
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
+        .card-name {
+            font-weight: 700;
+            color: white;
+            font-size: 0.95rem;
         }
 
-        /* ── Firebase Setup Banner ── */
+        .card-phone {
+            font-size: 0.78rem;
+            color: var(--muted);
+            margin-top: 2px;
+        }
+
+        .card-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 10px;
+            font-size: 0.78rem;
+            color: #94a3b8;
+        }
+
+        .card-meta span {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+
+        .card-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+        }
+
+        /* ── Setup Banner ── */
         .setup-banner {
             background: linear-gradient(135deg, rgba(251, 191, 36, 0.1), rgba(245, 158, 11, 0.05));
             border: 1px solid rgba(251, 191, 36, 0.3);
-            border-radius: 16px;
-            padding: 24px 28px;
-            margin-bottom: 32px;
+            border-radius: 14px;
+            padding: 18px 20px;
+            margin-bottom: 20px;
             display: none;
         }
 
@@ -341,117 +563,77 @@
         }
 
         .setup-banner h3 {
-            color: #fbbf24;
-            font-size: 1rem;
-            margin-bottom: 8px;
+            color: var(--warn);
+            font-size: 0.95rem;
+            margin-bottom: 6px;
         }
 
         .setup-banner p {
             color: #94a3b8;
-            font-size: 0.875rem;
+            font-size: 0.82rem;
             line-height: 1.7;
         }
 
         .setup-banner code {
             background: rgba(0, 0, 0, 0.3);
-            padding: 2px 8px;
-            border-radius: 6px;
-            font-size: 0.82rem;
+            padding: 2px 7px;
+            border-radius: 5px;
+            font-size: 0.78rem;
             color: #f472b6;
         }
 
-        @media (max-width: 768px) {
+        /* ── Responsive ── */
+        @media (min-width: 600px) {
+            .back-link span {
+                display: inline;
+            }
+
             .stats-row {
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: repeat(4, 1fr);
             }
 
-            .search-input {
-                width: 100%;
+            .stat-box .num {
+                font-size: 2rem;
             }
 
-            .filter-bar {
-                flex-direction: column;
-                align-items: flex-start;
+            .main {
+                padding: 32px 24px 60px;
             }
 
-            tbody td:nth-child(5),
-            thead th:nth-child(5) {
+            .topbar {
+                padding: 16px 28px;
+            }
+
+            .topbar-title {
+                font-size: 1.15rem;
+            }
+        }
+
+        @media (max-width: 700px) {
+
+            /* Show cards, hide table */
+            .table-wrap table {
                 display: none;
             }
+
+            .cards-list {
+                display: flex;
+            }
+
+            .table-wrap {
+                background: transparent;
+                border: none;
+                border-radius: 0;
+                overflow: visible;
+            }
         }
 
-        /* ── Login Overlay ── */
-        #loginOverlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: #0f172a;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-        }
+        @media (min-width: 701px) {
 
-        .login-box {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 40px;
-            width: 100%;
-            max-width: 400px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .login-box h2 {
-            margin-bottom: 24px;
-            color: white;
-            font-weight: 600;
-        }
-
-        .login-input {
-            width: 100%;
-            padding: 12px 16px;
-            margin-bottom: 16px;
-            background: rgba(255, 255, 255, 0.07);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            color: #e2e8f0;
-            font-size: 1rem;
-            outline: none;
-            transition: 0.2s;
-            box-sizing: border-box;
-        }
-
-        .login-input:focus {
-            border-color: #38bdf8;
-            background: rgba(56, 189, 248, 0.06);
-        }
-
-        .login-btn {
-            width: 100%;
-            padding: 12px;
-            background: linear-gradient(135deg, #0ea5e9, #6366f1);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .login-btn:hover {
-            opacity: 0.9;
-        }
-
-        .error-msg {
-            color: #ef4444;
-            font-size: 0.85rem;
-            margin-top: 12px;
-            display: none;
+            /* Show table, hide cards */
+            .cards-list {
+                display: none !important;
+            }
         }
     </style>
 </head>
@@ -461,52 +643,51 @@
     <!-- Login Overlay -->
     <div id="loginOverlay">
         <div class="login-box">
+            <div class="login-logo">🦷</div>
             <h2>Admin Login</h2>
-            <input type="text" id="username" class="login-input" placeholder="Username" />
-            <input type="password" id="password" class="login-input" placeholder="Password" />
-            <button class="login-btn" id="loginBtn">Login</button>
-            <div id="loginError" class="error-msg">Incorrect username or password!</div>
+            <p>Karishma Dental Clinic · Dashboard</p>
+            <input type="text" id="username" class="login-input" placeholder="Username" autocomplete="username" />
+            <input type="password" id="password" class="login-input" placeholder="Password"
+                autocomplete="current-password" />
+            <button class="login-btn" id="loginBtn">Login →</button>
+            <div id="loginError" class="error-msg">⚠️ Incorrect username or password</div>
         </div>
     </div>
 
-    <!-- Dashboard Content -->
-    <div id="dashboardApp" style="display: none;">
+    <!-- Dashboard -->
+    <div id="dashboardApp" style="display:none;">
 
         <!-- Top Bar -->
         <div class="topbar">
             <div class="topbar-brand">
-                <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                <svg width="32" height="32" viewBox="0 0 36 36" fill="none">
                     <circle cx="18" cy="18" r="18" fill="rgba(255,255,255,0.2)" />
                     <path
                         d="M11 14c0-3.866 3.134-7 7-7s7 3.134 7 7c0 2.5-1.5 4.5-2.5 6.5S21 26 18 29c-3-3-3.5-6.5-4.5-8.5S11 16.5 11 14z"
                         fill="white" />
                 </svg>
                 <div>
-                    <div class="topbar-title">Karishma Dental Clinic</div>
+                    <div class="topbar-title">Karishma Dental</div>
                     <div class="topbar-sub">Admin Dashboard</div>
                 </div>
             </div>
-            <a href="index.html" class="back-link">← Back to Website</a>
+            <a href="index.html" class="back-link">← <span>Back to Website</span></a>
         </div>
 
-        <!-- Main Content -->
         <div class="main">
 
-            <!-- Firebase Setup Banner -->
+            <!-- Setup Banner -->
             <div class="setup-banner" id="setupBanner">
                 <h3>⚠️ Firebase Not Configured Yet</h3>
-                <p>
-                    Open <code>firebase-config.js</code> and paste your Firebase credentials to start saving
-                    appointments.
-                    Follow the step-by-step guide in <code>SETUP_GUIDE.md</code> — it only takes 5 minutes!
-                </p>
+                <p>Open <code>firebase-config.js</code> and paste your Firebase credentials. Follow
+                    <code>SETUP_GUIDE.md</code> — it only takes 5 minutes!</p>
             </div>
 
-            <!-- Stats Row -->
+            <!-- Stats -->
             <div class="stats-row">
                 <div class="stat-box">
                     <div class="num" id="statTotal">—</div>
-                    <div class="label">Total Appointments</div>
+                    <div class="label">Total</div>
                 </div>
                 <div class="stat-box">
                     <div class="num" id="statPending">—</div>
@@ -524,17 +705,37 @@
 
             <!-- Filter Bar -->
             <div class="filter-bar">
-                <h2>📋 All Appointments</h2>
-                <input type="text" class="search-input" id="searchInput" placeholder="🔍  Search by name or service…"
+                <h2>📋 Appointments</h2>
+                <input type="search" class="search-input" id="searchInput" placeholder="🔍 Search…"
                     oninput="filterTable()" />
-                <button class="refresh-btn" onclick="loadAppointments()">↻ Refresh</button>
+                <button class="refresh-btn" onclick="loadAppointments(true)">↻ Refresh</button>
             </div>
 
-            <!-- Table -->
-            <div class="table-wrap">
-                <div class="state-box" id="loadingState">
-                    <div class="spin"></div>
-                    <p>Loading appointments…</p>
+            <!-- Table Wrap (skeleton + table + cards) -->
+            <div class="table-wrap" id="tableWrap">
+
+                <!-- Skeleton Loader -->
+                <div id="skeletonState" class="skeleton-row">
+                    <div class="skeleton-card">
+                        <div class="skel-line wide"></div>
+                        <div class="skel-line med"></div>
+                        <div class="skel-line short"></div>
+                    </div>
+                    <div class="skeleton-card">
+                        <div class="skel-line wide"></div>
+                        <div class="skel-line med"></div>
+                        <div class="skel-line short"></div>
+                    </div>
+                    <div class="skeleton-card">
+                        <div class="skel-line wide"></div>
+                        <div class="skel-line med"></div>
+                        <div class="skel-line short"></div>
+                    </div>
+                    <div class="skeleton-card">
+                        <div class="skel-line wide"></div>
+                        <div class="skel-line med"></div>
+                        <div class="skel-line short"></div>
+                    </div>
                 </div>
 
                 <div class="state-box" id="emptyState" style="display:none;">
@@ -547,6 +748,7 @@
                     <p id="errorMsg">Firebase not configured. Please follow the setup guide.</p>
                 </div>
 
+                <!-- Desktop Table -->
                 <table id="appointmentsTable" style="display:none;">
                     <thead>
                         <tr>
@@ -555,7 +757,7 @@
                             <th>Patient Name</th>
                             <th>Phone</th>
                             <th>Service</th>
-                            <th>Date & Time</th>
+                            <th>Date &amp; Time</th>
                             <th>Message</th>
                             <th>Status</th>
                             <th>Booked On</th>
@@ -563,7 +765,11 @@
                     </thead>
                     <tbody id="tableBody"></tbody>
                 </table>
-            </div>
+
+                <!-- Mobile Cards -->
+                <div class="cards-list" id="cardsList"></div>
+
+            </div><!-- /table-wrap -->
 
         </div><!-- /main -->
     </div><!-- /dashboardApp -->
@@ -571,56 +777,64 @@
     <script type="module">
         import { fetchAppointments, updateAppointmentStatus } from './firebase-service.js';
 
-        // --- Login Logic ---
+        const CACHE_KEY = 'adminApptsCache';
+        let allData = [];
+
+        // ── Login ──────────────────────────────────────────────
         const loginOverlay = document.getElementById('loginOverlay');
         const dashboardApp = document.getElementById('dashboardApp');
         const loginBtn = document.getElementById('loginBtn');
         const loginError = document.getElementById('loginError');
 
-        // Check if already logged in this session
         if (sessionStorage.getItem('adminLoggedIn') === 'true') {
-            loginOverlay.style.display = 'none';
-            dashboardApp.style.display = 'block';
-            setTimeout(loadAppointments, 100);
+            showDashboard();
         }
 
-        loginBtn.addEventListener('click', () => {
+        loginBtn.addEventListener('click', doLogin);
+        document.getElementById('password').addEventListener('keypress', e => { if (e.key === 'Enter') doLogin(); });
+
+        function doLogin() {
             const user = document.getElementById('username').value.trim();
             const pass = document.getElementById('password').value.trim();
-
-            // Admin credentials
             if (user === 'dental' && pass === '17071990') {
                 sessionStorage.setItem('adminLoggedIn', 'true');
-                loginOverlay.style.display = 'none';
-                dashboardApp.style.display = 'block';
-                loadAppointments();
+                showDashboard();
             } else {
                 loginError.style.display = 'block';
+                document.getElementById('password').value = '';
             }
-        });
+        }
 
-        document.getElementById('password').addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') loginBtn.click();
-        });
+        function showDashboard() {
+            loginOverlay.style.display = 'none';
+            dashboardApp.style.display = 'block';
+            // Show cached data immediately, refresh in background
+            const cached = sessionStorage.getItem(CACHE_KEY);
+            if (cached) {
+                try {
+                    allData = JSON.parse(cached);
+                    renderAll(allData);
+                } catch (_) { }
+            }
+            loadAppointments(false);
+        }
 
-        // --- Dashboard Logic ---
-        let allData = [];
-
-        window.loadAppointments = async function () {
-            showState('loading');
+        // ── Load Appointments ──────────────────────────────────
+        window.loadAppointments = async function (forceRefresh = true) {
+            if (forceRefresh) showState('skeleton');
             try {
                 allData = await fetchAppointments();
-                renderTable(allData);
-                updateStats(allData);
+                sessionStorage.setItem(CACHE_KEY, JSON.stringify(allData));
+                renderAll(allData);
             } catch (err) {
                 console.error(err);
-                document.getElementById('errorMsg').textContent =
-                    '❌ Firebase not connected. Please open firebase-config.js and paste your credentials.';
+                document.getElementById('errorMsg').textContent = '❌ Firebase not connected. Please check firebase-config.js.';
                 document.getElementById('setupBanner').classList.add('show');
-                showState('error');
+                if (!allData.length) showState('error');
             }
         };
 
+        // ── Filter ─────────────────────────────────────────────
         window.filterTable = function () {
             const q = document.getElementById('searchInput').value.toLowerCase();
             const filtered = allData.filter(a =>
@@ -628,82 +842,115 @@
                 (a.service || '').toLowerCase().includes(q) ||
                 (a.phone || '').includes(q)
             );
-            renderTable(filtered);
+            renderAll(filtered);
         };
 
-        function renderTable(data) {
+        // ── Render ─────────────────────────────────────────────
+        function renderAll(data) {
             if (!data.length) { showState('empty'); return; }
+            renderTable(data);
+            renderCards(data);
+            updateStats(data);
+            showState('data');
+        }
 
+        function renderTable(data) {
             const tbody = document.getElementById('tableBody');
             tbody.innerHTML = data.map((a, i) => {
                 const name = `${a.firstName || ''} ${a.lastName || ''}`.trim() || '—';
                 const ts = a.createdAt?.toDate?.() || null;
                 const booked = ts ? ts.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' }) : '—';
                 const status = a.status || 'pending';
-                const isCompleted = status === 'completed';
-                const statusClass = {
-                    pending: 'status-pending',
-                    confirmed: 'status-confirmed',
-                    done: 'status-done',
-                    completed: 'status-completed'
-                }[status] || 'status-pending';
-                const statusLabel = status.charAt(0).toUpperCase() + status.slice(1);
-
-                const actionBtn = isCompleted
-                    ? `<button class="action-btn done-btn" disabled>✅ Completed</button>`
-                    : `<button class="action-btn" onclick="markComplete('${a.id}', this)">☑ Mark Done</button>`;
+                const done = status === 'completed';
+                const cls = { pending: 'status-pending', confirmed: 'status-confirmed', done: 'status-done', completed: 'status-completed' }[status] || 'status-pending';
+                const label = status.charAt(0).toUpperCase() + status.slice(1);
+                const actionBtn = done
+                    ? `<button class="action-btn done-btn" disabled>✅ Done</button>`
+                    : `<button class="action-btn" onclick="markComplete('${a.id}',this)">☑ Mark Done</button>`;
 
                 return `<tr id="row-${a.id}">
-        <td>${actionBtn}</td>
-        <td>${i + 1}</td>
-        <td class="td-name">${name}</td>
-        <td>${a.phone || '—'}</td>
-        <td><span class="td-service">${a.service || '—'}</span></td>
-        <td>${a.date || '—'} ${a.time ? '@ ' + a.time : ''}</td>
-        <td>${a.message ? a.message.slice(0, 50) + (a.message.length > 50 ? '…' : '') : '—'}</td>
-        <td><span class="status-badge ${statusClass}" id="status-${a.id}">${statusLabel}</span></td>
-        <td>${booked}</td>
-      </tr>`;
+                    <td>${actionBtn}</td>
+                    <td>${i + 1}</td>
+                    <td class="td-name">${name}</td>
+                    <td>${a.phone || '—'}</td>
+                    <td><span class="td-service">${a.service || '—'}</span></td>
+                    <td>${a.date || '—'} ${a.time ? '@ ' + a.time : ''}</td>
+                    <td>${a.message ? a.message.slice(0, 50) + (a.message.length > 50 ? '…' : '') : '—'}</td>
+                    <td><span class="status-badge ${cls}" id="status-${a.id}">${label}</span></td>
+                    <td>${booked}</td>
+                </tr>`;
             }).join('');
+        }
 
-            showState('table');
+        function renderCards(data) {
+            const list = document.getElementById('cardsList');
+            list.innerHTML = data.map((a, i) => {
+                const name = `${a.firstName || ''} ${a.lastName || ''}`.trim() || '—';
+                const status = a.status || 'pending';
+                const done = status === 'completed';
+                const cls = { pending: 'status-pending', confirmed: 'status-confirmed', done: 'status-done', completed: 'status-completed' }[status] || 'status-pending';
+                const label = status.charAt(0).toUpperCase() + status.slice(1);
+                const btn = done
+                    ? `<button class="action-btn done-btn" disabled>✅ Done</button>`
+                    : `<button class="action-btn" onclick="markComplete('${a.id}',this)">☑ Mark Done</button>`;
+
+                return `<div class="appt-card" id="card-${a.id}">
+                    <div class="card-top">
+                        <div>
+                            <div class="card-name">${i + 1}. ${name}</div>
+                            <div class="card-phone">📞 ${a.phone || '—'}</div>
+                        </div>
+                        <span class="status-badge ${cls}" id="card-status-${a.id}">${label}</span>
+                    </div>
+                    <div class="card-meta">
+                        <span>🦷 ${a.service || '—'}</span>
+                        ${a.date ? `<span>📅 ${a.date} ${a.time ? '@ ' + a.time : ''}</span>` : ''}
+                        ${a.message ? `<span>💬 ${a.message.slice(0, 40)}${a.message.length > 40 ? '…' : ''}</span>` : ''}
+                    </div>
+                    <div class="card-bottom">
+                        <span class="td-service" style="font-size:0.7rem;">${a.service || '—'}</span>
+                        ${btn}
+                    </div>
+                </div>`;
+            }).join('');
         }
 
         function updateStats(data) {
             const today = new Date().toLocaleDateString('en-CA');
             const thisMonth = new Date().toISOString().slice(0, 7);
-
-            document.getElementById('statTotal').textContent = data.length;
-            document.getElementById('statPending').textContent = data.filter(a => (a.status || 'pending') === 'pending').length;
-            document.getElementById('statToday').textContent = data.filter(a => a.date === today).length;
-            document.getElementById('statThisMonth').textContent = data.filter(a => (a.date || '').startsWith(thisMonth)).length;
+            document.getElementById('statTotal').textContent = data.length || allData.length;
+            document.getElementById('statPending').textContent = allData.filter(a => (a.status || 'pending') === 'pending').length;
+            document.getElementById('statToday').textContent = allData.filter(a => a.date === today).length;
+            document.getElementById('statThisMonth').textContent = allData.filter(a => (a.date || '').startsWith(thisMonth)).length;
         }
 
         function showState(state) {
-            document.getElementById('loadingState').style.display = state === 'loading' ? 'block' : 'none';
+            document.getElementById('skeletonState').style.display = state === 'skeleton' ? 'flex' : 'none';
             document.getElementById('emptyState').style.display = state === 'empty' ? 'block' : 'none';
             document.getElementById('errorState').style.display = state === 'error' ? 'block' : 'none';
-            document.getElementById('appointmentsTable').style.display = state === 'table' ? 'table' : 'none';
+            document.getElementById('appointmentsTable').style.display = state === 'data' ? 'table' : 'none';
+            document.getElementById('cardsList').style.display = state === 'data' ? 'flex' : 'none';
         }
 
-        // Auto load on page open
-        // loadAppointments(); // Now called after successful login
-
-        // ── Mark appointment as Completed ──
+        // ── Mark Complete ──────────────────────────────────────
         window.markComplete = async function (id, btn) {
             btn.disabled = true;
-            btn.textContent = '⏳ Saving…';
+            btn.textContent = '⏳…';
             const result = await updateAppointmentStatus(id, 'completed');
             if (result.success) {
-                btn.outerHTML = `<button class="action-btn done-btn" disabled>✅ Completed</button>`;
+                // Update table row badge
                 const badge = document.getElementById('status-' + id);
-                if (badge) {
-                    badge.textContent = 'Completed';
-                    badge.className = 'status-badge status-completed';
-                }
-                // Update local data and refresh stats
+                if (badge) { badge.textContent = 'Completed'; badge.className = 'status-badge status-completed'; }
+                btn.outerHTML = `<button class="action-btn done-btn" disabled>✅ Done</button>`;
+
+                // Update mobile card badge
+                const cardBadge = document.getElementById('card-status-' + id);
+                if (cardBadge) { cardBadge.textContent = 'Completed'; cardBadge.className = 'status-badge status-completed'; }
+
+                // Update local cache
                 const entry = allData.find(a => a.id === id);
                 if (entry) entry.status = 'completed';
+                sessionStorage.setItem(CACHE_KEY, JSON.stringify(allData));
                 updateStats(allData);
             } else {
                 btn.disabled = false;
