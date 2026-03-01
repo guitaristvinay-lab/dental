@@ -186,7 +186,7 @@ window.handleFormSubmit = async function handleFormSubmit(e) {
     const result = await firebaseSaveAppointment(data);
     savedToFirebase = result.success;
     if (!result.success && errBox) {
-      errBox.textContent = '⚠️ Could not connect to database. Please call us directly at +91 98765 43210';
+      errBox.textContent = '⚠️ Could not connect to database. Please call us directly at +91 96213 45737';
       errBox.style.display = 'flex';
     }
   }
