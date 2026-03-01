@@ -337,107 +337,230 @@
                 display: none;
             }
         }
+
+        /* ── Login Overlay ── */
+        #loginOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #0f172a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .login-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .login-box h2 {
+            margin-bottom: 24px;
+            color: white;
+            font-weight: 600;
+        }
+
+        .login-input {
+            width: 100%;
+            padding: 12px 16px;
+            margin-bottom: 16px;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: #e2e8f0;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.2s;
+            box-sizing: border-box;
+        }
+
+        .login-input:focus {
+            border-color: #38bdf8;
+            background: rgba(56, 189, 248, 0.06);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #0ea5e9, #6366f1);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .login-btn:hover {
+            opacity: 0.9;
+        }
+
+        .error-msg {
+            color: #ef4444;
+            font-size: 0.85rem;
+            margin-top: 12px;
+            display: none;
+        }
     </style>
 </head>
 
 <body>
 
-    <!-- Top Bar -->
-    <div class="topbar">
-        <div class="topbar-brand">
-            <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-                <circle cx="18" cy="18" r="18" fill="rgba(255,255,255,0.2)" />
-                <path
-                    d="M11 14c0-3.866 3.134-7 7-7s7 3.134 7 7c0 2.5-1.5 4.5-2.5 6.5S21 26 18 29c-3-3-3.5-6.5-4.5-8.5S11 16.5 11 14z"
-                    fill="white" />
-            </svg>
-            <div>
-                <div class="topbar-title">Karishma Dental Clinic</div>
-                <div class="topbar-sub">Admin Dashboard</div>
-            </div>
+    <!-- Login Overlay -->
+    <div id="loginOverlay">
+        <div class="login-box">
+            <h2>Admin Login</h2>
+            <input type="text" id="username" class="login-input" placeholder="Username" />
+            <input type="password" id="password" class="login-input" placeholder="Password" />
+            <button class="login-btn" id="loginBtn">Login</button>
+            <div id="loginError" class="error-msg">Incorrect username or password!</div>
         </div>
-        <a href="index.html" class="back-link">← Back to Website</a>
     </div>
 
-    <!-- Main Content -->
-    <div class="main">
+    <!-- Dashboard Content -->
+    <div id="dashboardApp" style="display: none;">
 
-        <!-- Firebase Setup Banner -->
-        <div class="setup-banner" id="setupBanner">
-            <h3>⚠️ Firebase Not Configured Yet</h3>
-            <p>
-                Open <code>firebase-config.js</code> and paste your Firebase credentials to start saving appointments.
-                Follow the step-by-step guide in <code>SETUP_GUIDE.md</code> — it only takes 5 minutes!
-            </p>
+        <!-- Top Bar -->
+        <div class="topbar">
+            <div class="topbar-brand">
+                <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                    <circle cx="18" cy="18" r="18" fill="rgba(255,255,255,0.2)" />
+                    <path
+                        d="M11 14c0-3.866 3.134-7 7-7s7 3.134 7 7c0 2.5-1.5 4.5-2.5 6.5S21 26 18 29c-3-3-3.5-6.5-4.5-8.5S11 16.5 11 14z"
+                        fill="white" />
+                </svg>
+                <div>
+                    <div class="topbar-title">Karishma Dental Clinic</div>
+                    <div class="topbar-sub">Admin Dashboard</div>
+                </div>
+            </div>
+            <a href="index.html" class="back-link">← Back to Website</a>
         </div>
 
-        <!-- Stats Row -->
-        <div class="stats-row">
-            <div class="stat-box">
-                <div class="num" id="statTotal">—</div>
-                <div class="label">Total Appointments</div>
-            </div>
-            <div class="stat-box">
-                <div class="num" id="statPending">—</div>
-                <div class="label">Pending</div>
-            </div>
-            <div class="stat-box">
-                <div class="num" id="statToday">—</div>
-                <div class="label">Today</div>
-            </div>
-            <div class="stat-box">
-                <div class="num" id="statThisMonth">—</div>
-                <div class="label">This Month</div>
-            </div>
-        </div>
+        <!-- Main Content -->
+        <div class="main">
 
-        <!-- Filter Bar -->
-        <div class="filter-bar">
-            <h2>📋 All Appointments</h2>
-            <input type="text" class="search-input" id="searchInput" placeholder="🔍  Search by name or service…"
-                oninput="filterTable()" />
-            <button class="refresh-btn" onclick="loadAppointments()">↻ Refresh</button>
-        </div>
-
-        <!-- Table -->
-        <div class="table-wrap">
-            <div class="state-box" id="loadingState">
-                <div class="spin"></div>
-                <p>Loading appointments…</p>
+            <!-- Firebase Setup Banner -->
+            <div class="setup-banner" id="setupBanner">
+                <h3>⚠️ Firebase Not Configured Yet</h3>
+                <p>
+                    Open <code>firebase-config.js</code> and paste your Firebase credentials to start saving
+                    appointments.
+                    Follow the step-by-step guide in <code>SETUP_GUIDE.md</code> — it only takes 5 minutes!
+                </p>
             </div>
 
-            <div class="state-box" id="emptyState" style="display:none;">
-                <div class="icon">📭</div>
-                <p>No appointments yet. They'll appear here once patients book.</p>
+            <!-- Stats Row -->
+            <div class="stats-row">
+                <div class="stat-box">
+                    <div class="num" id="statTotal">—</div>
+                    <div class="label">Total Appointments</div>
+                </div>
+                <div class="stat-box">
+                    <div class="num" id="statPending">—</div>
+                    <div class="label">Pending</div>
+                </div>
+                <div class="stat-box">
+                    <div class="num" id="statToday">—</div>
+                    <div class="label">Today</div>
+                </div>
+                <div class="stat-box">
+                    <div class="num" id="statThisMonth">—</div>
+                    <div class="label">This Month</div>
+                </div>
             </div>
 
-            <div class="state-box" id="errorState" style="display:none;">
-                <div class="icon">🔌</div>
-                <p id="errorMsg">Firebase not configured. Please follow the setup guide.</p>
+            <!-- Filter Bar -->
+            <div class="filter-bar">
+                <h2>📋 All Appointments</h2>
+                <input type="text" class="search-input" id="searchInput" placeholder="🔍  Search by name or service…"
+                    oninput="filterTable()" />
+                <button class="refresh-btn" onclick="loadAppointments()">↻ Refresh</button>
             </div>
 
-            <table id="appointmentsTable" style="display:none;">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Patient Name</th>
-                        <th>Phone</th>
-                        <th>Service</th>
-                        <th>Date & Time</th>
-                        <th>Message</th>
-                        <th>Status</th>
-                        <th>Booked On</th>
-                    </tr>
-                </thead>
-                <tbody id="tableBody"></tbody>
-            </table>
-        </div>
+            <!-- Table -->
+            <div class="table-wrap">
+                <div class="state-box" id="loadingState">
+                    <div class="spin"></div>
+                    <p>Loading appointments…</p>
+                </div>
 
-    </div><!-- /main -->
+                <div class="state-box" id="emptyState" style="display:none;">
+                    <div class="icon">📭</div>
+                    <p>No appointments yet. They'll appear here once patients book.</p>
+                </div>
+
+                <div class="state-box" id="errorState" style="display:none;">
+                    <div class="icon">🔌</div>
+                    <p id="errorMsg">Firebase not configured. Please follow the setup guide.</p>
+                </div>
+
+                <table id="appointmentsTable" style="display:none;">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Patient Name</th>
+                            <th>Phone</th>
+                            <th>Service</th>
+                            <th>Date & Time</th>
+                            <th>Message</th>
+                            <th>Status</th>
+                            <th>Booked On</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody"></tbody>
+                </table>
+            </div>
+
+        </div><!-- /main -->
+    </div><!-- /dashboardApp -->
 
     <script type="module">
         import { fetchAppointments } from './firebase-service.js';
 
+        // --- Login Logic ---
+        const loginOverlay = document.getElementById('loginOverlay');
+        const dashboardApp = document.getElementById('dashboardApp');
+        const loginBtn = document.getElementById('loginBtn');
+        const loginError = document.getElementById('loginError');
+
+        // Check if already logged in this session
+        if (sessionStorage.getItem('adminLoggedIn') === 'true') {
+            loginOverlay.style.display = 'none';
+            dashboardApp.style.display = 'block';
+            setTimeout(loadAppointments, 100);
+        }
+
+        loginBtn.addEventListener('click', () => {
+            const user = document.getElementById('username').value.trim();
+            const pass = document.getElementById('password').value.trim();
+
+            // Admin credentials
+            if (user === 'dental' && pass === '17071990') {
+                sessionStorage.setItem('adminLoggedIn', 'true');
+                loginOverlay.style.display = 'none';
+                dashboardApp.style.display = 'block';
+                loadAppointments();
+            } else {
+                loginError.style.display = 'block';
+            }
+        });
+
+        document.getElementById('password').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') loginBtn.click();
+        });
+
+        // --- Dashboard Logic ---
         let allData = [];
 
         window.loadAppointments = async function () {
@@ -509,7 +632,7 @@
         }
 
         // Auto load on page open
-        loadAppointments();
+        // loadAppointments(); // Now called after successful login
     </script>
 
 </body>
