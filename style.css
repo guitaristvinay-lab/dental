@@ -8,6 +8,10 @@
   --primary-dark: #0284c7;
   --secondary: #6366f1;
   --accent: #f472b6;
+  --coral: #fb7185;
+  --teal: #14b8a6;
+  --gold: #f59e0b;
+  --violet: #8b5cf6;
   --success: #10b981;
   --text-dark: #0f172a;
   --text-primary: #1e293b;
@@ -86,17 +90,29 @@ button {
 
 /* ---- Typography ---- */
 .gradient-text {
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  background: linear-gradient(135deg, var(--primary), var(--violet), var(--accent));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  background-size: 200% auto;
+  animation: gradientShift 4s ease infinite alternate;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 100% 50%;
+  }
 }
 
 .section-tag {
   display: inline-block;
-  background: rgba(14, 165, 233, 0.1);
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.12), rgba(139, 92, 246, 0.12));
   color: var(--primary);
-  border: 1px solid rgba(14, 165, 233, 0.2);
+  border: 1px solid rgba(14, 165, 233, 0.3);
   padding: 6px 16px;
   border-radius: 50px;
   font-size: 0.8rem;
@@ -104,6 +120,19 @@ button {
   letter-spacing: 1.5px;
   text-transform: uppercase;
   margin-bottom: 16px;
+  animation: tagSparkle 3s ease-in-out infinite;
+}
+
+@keyframes tagSparkle {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(14, 165, 233, 0);
+  }
+
+  50% {
+    box-shadow: 0 0 12px 3px rgba(14, 165, 233, 0.25);
+  }
 }
 
 .section-header {
@@ -144,14 +173,54 @@ button {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  background: linear-gradient(135deg, var(--primary), var(--violet), var(--accent));
+  background-size: 200% auto;
   color: white;
-  box-shadow: 0 4px 20px rgba(14, 165, 233, 0.3);
+  box-shadow: 0 4px 20px rgba(14, 165, 233, 0.35);
+  animation: shimmerBtn 4s linear infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -75%;
+  width: 50%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.18);
+  transform: skewX(-20deg);
+  animation: btnShine 3.5s ease-in-out infinite;
+}
+
+@keyframes btnShine {
+  0% {
+    left: -75%;
+  }
+
+  60% {
+    left: 125%;
+  }
+
+  100% {
+    left: 125%;
+  }
+}
+
+@keyframes shimmerBtn {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 200% 50%;
+  }
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(14, 165, 233, 0.4);
+  box-shadow: 0 10px 36px rgba(99, 102, 241, 0.45);
 }
 
 .btn-outline {
@@ -287,7 +356,7 @@ button {
   display: flex;
   align-items: center;
   position: relative;
-  background: linear-gradient(160deg, #f0f9ff 0%, #e0f2fe 40%, #f8fafc 100%);
+  background: linear-gradient(160deg, #f0f9ff 0%, #e8f4ff 25%, #ede9fe 60%, #fdf2f8 100%);
   overflow: hidden;
   padding-top: 90px;
 }
@@ -306,20 +375,36 @@ button {
 }
 
 .blob-1 {
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(14, 165, 233, 0.18) 0%, transparent 70%);
+  width: 650px;
+  height: 650px;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.22) 0%, rgba(139, 92, 246, 0.1) 50%, transparent 70%);
   top: -150px;
   right: -100px;
 }
 
 .blob-2 {
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, rgba(244, 114, 182, 0.18) 0%, rgba(99, 102, 241, 0.12) 50%, transparent 70%);
   bottom: -100px;
   left: -100px;
   animation-delay: -4s;
+}
+
+/* Third hero blob for extra colour depth */
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(20, 184, 166, 0.12) 0%, transparent 70%);
+  top: 60%;
+  right: 30%;
+  filter: blur(70px);
+  animation: blobFloat 10s ease-in-out infinite alternate;
+  animation-delay: -2s;
+  pointer-events: none;
 }
 
 @keyframes blobFloat {
@@ -541,9 +626,21 @@ button {
    MARQUEE
    ============================================ */
 .marquee-section {
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  background: linear-gradient(135deg, var(--primary) 0%, var(--violet) 50%, var(--accent) 100%);
+  background-size: 300% auto;
+  animation: marqueeGradient 6s ease infinite alternate;
   padding: 18px 0;
   overflow: hidden;
+}
+
+@keyframes marqueeGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 100% 50%;
+  }
 }
 
 .marquee-track {
@@ -555,10 +652,11 @@ button {
   align-items: center;
   gap: 24px;
   white-space: nowrap;
-  animation: marqueeScroll 30s linear infinite;
+  animation: marqueeScroll 28s linear infinite;
   font-size: 0.9rem;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
 }
 
 .marquee-content span {
@@ -579,7 +677,7 @@ button {
    SERVICES
    ============================================ */
 .services-section {
-  background: var(--bg-soft);
+  background: linear-gradient(160deg, #f8fafc 0%, #f0f4ff 50%, #fdf5ff 100%);
 }
 
 .services-grid {
@@ -628,7 +726,18 @@ button {
   justify-content: center;
   margin-bottom: 24px;
   transition: var(--transition);
-  box-shadow: 0 4px 16px rgba(14, 165, 233, 0.2);
+  box-shadow: 0 4px 20px color-mix(in srgb, var(--c1) 40%, transparent);
+  animation: iconGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes iconGlow {
+  from {
+    box-shadow: 0 4px 16px rgba(14, 165, 233, 0.2);
+  }
+
+  to {
+    box-shadow: 0 6px 28px rgba(14, 165, 233, 0.42);
+  }
 }
 
 .service-icon svg {
@@ -707,7 +816,34 @@ button {
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-xl);
-  border: 3px solid rgba(14, 165, 233, 0.1);
+  border: 3px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+}
+
+.about-img-card::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: calc(var(--radius-lg) + 3px);
+  background: linear-gradient(135deg, var(--primary), var(--violet), var(--accent), var(--teal), var(--primary));
+  background-size: 300% 300%;
+  animation: rainbowBorder 5s linear infinite;
+  z-index: -1;
+}
+
+@keyframes rainbowBorder {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .clinic-svg {
