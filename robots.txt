@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.karishma.com/sitemap.xml
+Sitemap: https://www.karishmadental.in/sitemap.xml
