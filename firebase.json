@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "dental-project-a825c",
     "public": ".",
     "ignore": [
       "firebase.json",

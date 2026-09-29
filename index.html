@@ -20,9 +20,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
         rel="stylesheet" />
-    <link rel="icon" type="image/jpeg" href="logo.jpg" />
-    <link rel="apple-touch-icon" href="logo.jpg" />
-    <link rel="stylesheet" href="style.css?v=6" />
+    <link rel="stylesheet" href="style.css?v=7" />
 </head>
 
 <body>
@@ -31,7 +29,24 @@
     <nav class="navbar" id="navbar">
         <div class="container nav-container">
             <a href="#home" class="logo">
-                <img src="logo.jpg" alt="Karishma Dental Clinic Logo" class="logo-img" />
+                <div class="logo-icon">
+                    <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                        <circle cx="18" cy="18" r="18" fill="url(#logoGrad)" />
+                        <path
+                            d="M11 14c0-3.866 3.134-7 7-7s7 3.134 7 7c0 2.5-1.5 4.5-2.5 6.5S21 26 18 29c-3-3-3.5-6.5-4.5-8.5S11 16.5 11 14z"
+                            fill="white" />
+                        <defs>
+                            <linearGradient id="logoGrad" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#0ea5e9" />
+                                <stop offset="1" stop-color="#6366f1" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-main">Karishma</span>
+                    <span class="logo-sub">Dental Clinic</span>
+                </div>
             </a>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home" class="nav-link active">Home</a></li>
@@ -650,7 +665,24 @@
             <div class="container footer-grid">
                 <div class="footer-brand">
                     <a href="#home" class="logo">
-                        <img src="logo.jpg" alt="Karishma Dental Clinic Logo" class="logo-img logo-img-footer" />
+                        <div class="logo-icon">
+                            <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                                <circle cx="18" cy="18" r="18" fill="url(#footerLogoGrad)" />
+                                <path
+                                    d="M11 14c0-3.866 3.134-7 7-7s7 3.134 7 7c0 2.5-1.5 4.5-2.5 6.5S21 26 18 29c-3-3-3.5-6.5-4.5-8.5S11 16.5 11 14z"
+                                    fill="white" />
+                                <defs>
+                                    <linearGradient id="footerLogoGrad" x1="0" y1="0" x2="36" y2="36">
+                                        <stop stop-color="#0ea5e9" />
+                                        <stop offset="1" stop-color="#6366f1" />
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                        <div class="logo-text">
+                            <span class="logo-main" style="color:white;">Karishma</span>
+                            <span class="logo-sub" style="color:#94a3b8;">Dental Clinic</span>
+                        </div>
                     </a>
                     <p class="footer-brand-desc">Your trusted dental care partner since 2017. Creating beautiful,
                         healthy smiles for over 10,000 happy patients.</p>
