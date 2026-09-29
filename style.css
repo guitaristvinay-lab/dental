@@ -305,6 +305,29 @@ button {
   line-height: 1.4;
 }
 
+/* ── Logo Image ── */
+.logo-img {
+  height: 52px;
+  width: auto;
+  border-radius: 12px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(14, 165, 233, 0.18));
+  transition: var(--transition);
+  background: white;
+}
+
+.logo-img:hover {
+  transform: scale(1.04);
+  filter: drop-shadow(0 4px 16px rgba(99, 102, 241, 0.3));
+}
+
+.logo-img-footer {
+  height: 56px;
+  background: white;
+  border-radius: 12px;
+  padding: 4px 8px;
+}
+
 .nav-links {
   display: flex;
   align-items: center;
